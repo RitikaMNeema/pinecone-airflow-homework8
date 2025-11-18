@@ -31,8 +31,11 @@ Build a vector search pipeline that:
 ## Project Structure
 
 your-project/
+
 ├── docker-compose.yaml # Airflow + Dependencies (includes Pinecone & Sentence Transformers)
+
 ├── dags/
+
 │ └── Medium_to_Pinecone.py # Main Airflow DAG
 
 
@@ -71,6 +74,7 @@ test_search_query → Runs a sample query: "what is ethics in AI"
 
 # 1 Start Airflow
 docker compose down
+
 docker compose up -d --build
 
 # 2 Access Airflow UI
@@ -83,6 +87,9 @@ docker compose exec airflow-webserver airflow dags trigger Medium_to_Pinecone
 **Output Example**
 
 Search results for query: 'what is ethics in AI'
+
 ID: 102, Score: 0.8921, Title: AI and ethics in technology...
+
 ID: 458, Score: 0.8803, Title: Exploring fairness in AI systems...
+
 ID: 209, Score: 0.8739, Title: The role of ethics in modern AI...
