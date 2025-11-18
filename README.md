@@ -55,7 +55,8 @@ Add the following Variables in **Airflow UI → Admin → Variables**
 docker compose exec airflow-webserver airflow variables set PINECONE_API_KEY "<your-key>"
 docker compose exec airflow-webserver airflow variables set PINECONE_INDEX_NAME "semantic-search-fast"
 docker compose exec airflow-webserver airflow variables set PINECONE_REGION "us-east-1"
-docker compose exec airflow-webserver airflow variables set PINECONE_CLOUD "aws" ```
+docker compose exec airflow-webserver airflow variables set PINECONE_CLOUD "aws"
+```
 
 **DAG Workflow**
 
