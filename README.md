@@ -1,13 +1,13 @@
-# 🚀 Medium to Pinecone Search Engine (Airflow + Sentence Transformers)
+# Medium to Pinecone Search Engine (Airflow + Sentence Transformers)
 
 This project builds a **semantic search engine** using **Apache Airflow**, **Sentence Transformers**, and **Pinecone**.  
 The DAG automates downloading Medium article data, generating embeddings, creating a Pinecone index, and running semantic search queries.
 
 ---
 
-## 🧠 Project Overview
+## Project Overview
 
-### 🎯 Objective
+### Objective
 Build a vector search pipeline that:
 1. Downloads and preprocesses a Medium dataset.
 2. Generates embeddings using `sentence-transformers/all-MiniLM-L6-v2`.
@@ -16,7 +16,7 @@ Build a vector search pipeline that:
 
 ---
 
-## ⚙️ Tech Stack
+## Tech Stack
 
 | Component | Purpose |
 |------------|----------|
@@ -28,7 +28,7 @@ Build a vector search pipeline that:
 
 ---
 
-## 🏗️ Project Structure
+## Project Structure
 
 your-project/
 ├── docker-compose.yaml # Airflow + Dependencies (includes Pinecone & Sentence Transformers)
@@ -38,7 +38,7 @@ your-project/
 
 ---
 
-## 🔑 Airflow Variable Configuration
+## Airflow Variable Configuration
 
 Add the following Variables in **Airflow UI → Admin → Variables**  
 (or via CLI inside the webserver container):
@@ -55,27 +55,28 @@ Add the following Variables in **Airflow UI → Admin → Variables**
 docker compose exec airflow-webserver airflow variables set PINECONE_API_KEY "<your-key>"
 docker compose exec airflow-webserver airflow variables set PINECONE_INDEX_NAME "semantic-search-fast"
 docker compose exec airflow-webserver airflow variables set PINECONE_REGION "us-east-1"
-docker compose exec airflow-webserver airflow variables set PINECONE_CLOUD "aws"
+docker compose exec airflow-webserver airflow variables set PINECONE_CLOUD "aws" ```
 
 **DAG Workflow**
 
-download_data → Downloads Medium dataset (medium_data.csv)
-preprocess_data → Cleans and creates preprocessed CSV for embeddings
-create_pinecone_index → Creates or reuses a Pinecone index
-generate_embeddings_and_upsert → Generates embeddings and ingests them into Pinecone
+download_data → Downloads Medium dataset (medium_data.csv)  
+preprocess_data → Cleans and creates preprocessed CSV for embeddings  
+create_pinecone_index → Creates or reuses a Pinecone index  
+generate_embeddings_and_upsert → Generates embeddings and ingests them into Pinecone  
 test_search_query → Runs a sample query: "what is ethics in AI"
+
 
 **Setup Instructions**
 
-# 1️⃣ Start Airflow
+# 1 Start Airflow
 docker compose down
 docker compose up -d --build
 
-# 2️⃣ Access Airflow UI
+# 2 Access Airflow UI
 # open: http://localhost:8080
 # default creds: airflow / airflow
 
-# 3️⃣ Trigger the DAG
+# 3 Trigger the DAG
 docker compose exec airflow-webserver airflow dags trigger Medium_to_Pinecone
 
 **Output Example**
