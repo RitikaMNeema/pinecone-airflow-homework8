@@ -70,20 +70,6 @@ generate_embeddings_and_upsert → Generates embeddings and ingests them into Pi
 test_search_query → Runs a sample query: "what is ethics in AI"
 
 
-**Setup Instructions**
-
-** 1 Start Airflow**
-docker compose down
-
-docker compose up -d --build
-
-**2 Access Airflow UI**
-open: http://localhost:8080
-default creds: airflow / airflow
-
-**3 Trigger the DAG**
-docker compose exec airflow-webserver airflow dags trigger Medium_to_Pinecone
-
 **Output Example**
 
 Search results for query: 'what is ethics in AI'
